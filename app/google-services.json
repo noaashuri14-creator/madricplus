@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537724536870",
+    "project_id": "madricplus",
+    "storage_bucket": "madricplus.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537724536870:android:68461cbb93e7ebf99ebee7",
+        "android_client_info": {
+          "package_name": "example.madricplus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZOQTou0wpUp-S4C2OaL9bd5to-_ICoh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

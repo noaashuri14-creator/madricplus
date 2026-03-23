@@ -5,10 +5,50 @@
     android:layout_height="match_parent"
     tools:context=".ActionsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- רקע עדין -->
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:src="@drawable/bg_guides"
+        android:scaleType="centerCrop"
+        android:alpha="0.2" /> <!-- שקיפות לרקע -->
+
+    <!-- תוכן ראשי -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- כותרת -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="רשימת פעולות"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <!-- כפתור הוספת פעולה -->
+        <Button
+            android:id="@+id/btnAddAction"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="הוסף פעולה חדשה"
+            android:backgroundTint="#C8E6C9"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- רשימת פעולות -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerActions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="10dp"/>
+
+    </LinearLayout>
 
 </FrameLayout>

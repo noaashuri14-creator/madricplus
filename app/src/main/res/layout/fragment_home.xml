@@ -1,29 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnLogin"
+    <!-- רקע -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="התחברות"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_guides" />
 
-    <Button
-        android:id="@+id/btnActions"
+    <!-- שכבת תוכן מעל הרקע -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="רשימת פעולות"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnRooms"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="רשימת חדרים"/>
+        <!-- כפתור התחברות למעלה בצד -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="התחברות למדריך"
+            android:layout_gravity="end"
+            android:backgroundTint="#A5D6A7"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:elevation="4dp"/>
 
-</LinearLayout>
+        <!-- רווח כדי להניח את הכפתורים במרכז -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- כפתורים מרכזיים -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnActions"
+                android:layout_width="250dp"
+                android:layout_height="70dp"
+                android:text="רשימת פעולות"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#C8E6C9"
+                android:textColor="#2E7D32"
+                android:elevation="4dp"
+                android:padding="10dp"/>
+
+            <Button
+                android:id="@+id/btnRooms"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="רשימת חדרים"
+                android:textSize="18sp"
+                android:backgroundTint="#C8E6C9"
+                android:textColor="#2E7D32"
+                android:elevation="4dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <!-- רווח למטה -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</FrameLayout>
