@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFF3E3"
-    android:padding="12dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#B3A8D5BA">
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnAddAction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="➕ הוספת פעולה"
         android:backgroundTint="#A8D5BA"
-        android:textColor="#2E4F4F"
-        android:visibility="gone"/>
+        android:textColor="#2E4F4F"/>
 
     <ListView
-        android:id="@+id/listCategories"
+        android:id="@+id/listActions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="8dp"/>
+        android:dividerHeight="8dp"
+        android:padding="8dp"/>
 </LinearLayout>
