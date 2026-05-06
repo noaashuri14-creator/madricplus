@@ -1,23 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#DFF3E3"
-    android:padding="12dp">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btnAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="➕ הוספת פעולה"
-        android:backgroundTint="#A8D5BA"
-        android:textColor="#2E4F4F"
-        android:visibility="gone"/>
-
-    <ListView
-        android:id="@+id/listCategories"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2E7D32"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="8dp"/>
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

@@ -1,27 +1,22 @@
 package com.example.madricplus;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class ActionData {
 
-    public static HashMap<String, ArrayList<String>> categories = new HashMap<>();
+    private String name;
+    private String subject;
+    private String age;
+    private String content;
 
-    static {
+    public ActionData() {}
 
-        categories.put("כבוד", new ArrayList<>());
-        categories.put("צחוק", new ArrayList<>());
-        categories.put("עזרה לזולת", new ArrayList<>());
-        categories.put("אהבת הארץ", new ArrayList<>());
-        categories.put("מנהיגות", new ArrayList<>());
-        categories.put("גיבוש", new ArrayList<>());
-        categories.put("אחריות", new ArrayList<>());
-        categories.put("ערכים", new ArrayList<>());
-        categories.put("שיתוף פעולה", new ArrayList<>());
-        categories.put("הקשבה", new ArrayList<>());
-        categories.put("יוזמה", new ArrayList<>());
-
-        categories.get("כבוד").add("הקשבה לחבר | 10+ | לא להפריע בזמן דיבור");
-        categories.get("צחוק").add("משחק הומור | 8+ | משחק קבוצתי מצחיק");
+    public ActionData(String name, String subject, String age, String content) {
+        this.name = name;
+        this.subject = subject;
+        this.age = age;
+        this.content = content;
     }
+
+    public String getName() { return name; }
+    public String getSubject() { return subject; }
+    public String getAge() { return age; }
+    public String getContent() { return content; }
 }

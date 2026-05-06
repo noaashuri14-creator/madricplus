@@ -4,26 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class ActionsFragment extends Fragment {
 
-    ListView listView;
+    RecyclerView recyclerView;
+    ActionAdapter adapter;
+    ArrayList<ActionData> list;
     Button btnAdd;
-
-    ArrayList<String> currentList;
-    ArrayAdapter<String> adapter;
-
-    String selectedCategory = null;
-
-    boolean inActionsMode = false;
-
-    public ActionsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,82 +26,43 @@ public class ActionsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_actions, container, false);
 
-        listView = view.findViewById(R.id.listCategories);
+        recyclerView = view.findViewById(R.id.recyclerView);
         btnAdd = view.findViewById(R.id.btnAdd);
 
-        showCategories();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // לחיצה על פריט
-        listView.setOnItemClickListener((parent, v, position, id) -> {
+        list = new ArrayList<>();
 
-            if (!inActionsMode) {
-                // כניסה לקטגוריה
-                selectedCategory = currentList.get(position);
-                showActions(selectedCategory);
-            } else {
-                // חזרה לקטגוריות
-                showCategories();
-            }
+        adapter = new ActionAdapter(list);
+        recyclerView.setAdapter(adapter);
+
+        btnAdd.setOnClickListener(v -> {
+
+            View dialogView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.dialog_add_action, null);
+
+            EditText etName = dialogView.findViewById(R.id.etName);
+            EditText etSubject = dialogView.findViewById(R.id.etSubject);
+            EditText etAge = dialogView.findViewById(R.id.etAge);
+            EditText etContent = dialogView.findViewById(R.id.etContent);
+
+            new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                    .setTitle("הוספת פעולה חדשה")
+                    .setView(dialogView)
+                    .setPositiveButton("שמירה", (dialog, which) -> {
+
+                        String name = etName.getText().toString();
+                        String subject = etSubject.getText().toString();
+                        String age = etAge.getText().toString();
+                        String content = etContent.getText().toString();
+
+                        list.add(new ActionData(name, subject, age, content));
+                        adapter.notifyItemInserted(list.size() - 1);
+                    })
+                    .setNegativeButton("ביטול", null)
+                    .show();
         });
 
-        btnAdd.setOnClickListener(v -> showAddDialog());
-
         return view;
-    }
-
-    // 🟢 מצב קטגוריות
-    private void showCategories() {
-
-        inActionsMode = false;
-        btnAdd.setVisibility(View.GONE);
-
-        currentList = new ArrayList<>(ActionData.categories.keySet());
-
-        adapter = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_list_item_1,
-                currentList
-        );
-
-        listView.setAdapter(adapter);
-    }
-
-    // 🟡 מצב פעולות של קטגוריה
-    private void showActions(String category) {
-
-        inActionsMode = true;
-        btnAdd.setVisibility(View.VISIBLE);
-
-        currentList = ActionData.categories.get(category);
-
-        adapter = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_list_item_1,
-                currentList
-        );
-
-        listView.setAdapter(adapter);
-    }
-
-    // ➕ הוספת פעולה
-    private void showAddDialog() {
-
-        EditText input = new EditText(getContext());
-        input.setHint("כותרת | גיל | תוכן");
-
-        new AlertDialog.Builder(getContext())
-                .setTitle("הוספה ל-" + selectedCategory)
-                .setView(input)
-                .setPositiveButton("הוסף", (d, w) -> {
-
-                    String text = input.getText().toString();
-
-                    if (selectedCategory != null && !text.isEmpty()) {
-                        ActionData.categories.get(selectedCategory).add(text);
-                        adapter.notifyDataSetChanged();
-                    }
-                })
-                .setNegativeButton("ביטול", null)
-                .show();
     }
 }
